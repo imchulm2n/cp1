@@ -1,0 +1,680 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>analysis_data</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head>
+<body>
+	<h1>    
+        <p>상권 정보 WEB</p>
+        <a href="/">메인 페이지로 돌아가기</a>
+    </h1>
+	<article id="c5ce99fd-c1b5-4b31-99d9-b241b34cf4a5" class="page sans"><header><h1 class="page-title">analysis_data</h1></header><div class="page-body"><h1 id="5bcfd8a4-345b-46ca-b447-4d9e15f5bcf4" class="">상권분석 데이터</h1><table id="e4b62aa5-b229-4964-b2d1-1067c0cac1e6" class="simple-table"><tbody><tr id="fabec5a0-8292-4aa3-bedf-0163c27f98ef"><td id="o&lt;jF" class="" style="width:153.58333333333334px">총 사업체 수</td><td id="EAZ:" class="" style="width:153.58333333333334px"></td><td id="\qNA" class="" style="width:153.58333333333334px"></td></tr><tr id="a6828693-1e4e-4202-bde4-0541b7d10ece"><td id="o&lt;jF" class="" style="width:153.58333333333334px">시도별</td><td id="EAZ:" class="" style="width:153.58333333333334px">2019</td><td id="\qNA" class="" style="width:153.58333333333334px">2020</td></tr><tr id="3b6c3a63-5785-4122-bcc8-57c313a143d4"><td id="o&lt;jF" class="" style="width:153.58333333333334px">서울특별시</td><td id="EAZ:" class="" style="width:153.58333333333334px">102310</td><td id="\qNA" class="" style="width:153.58333333333334px">109283</td></tr><tr id="810f5c19-c488-4ab5-9d1d-3ec3c6cf241e"><td id="o&lt;jF" class="" style="width:153.58333333333334px">부산광역시</td><td id="EAZ:" class="" style="width:153.58333333333334px">43455</td><td id="\qNA" class="" style="width:153.58333333333334px">46363</td></tr><tr id="60c82276-c784-4f6c-8fcd-db7a073d0266"><td id="o&lt;jF" class="" style="width:153.58333333333334px">대구광역시</td><td id="EAZ:" class="" style="width:153.58333333333334px">30560</td><td id="\qNA" class="" style="width:153.58333333333334px">32398</td></tr><tr id="b8ddc49c-2272-415e-aae3-13178afbf2ea"><td id="o&lt;jF" class="" style="width:153.58333333333334px">인천광역시</td><td id="EAZ:" class="" style="width:153.58333333333334px">30110</td><td id="\qNA" class="" style="width:153.58333333333334px">33129</td></tr><tr id="6d205d50-ff22-4055-9ccf-65266014d615"><td id="o&lt;jF" class="" style="width:153.58333333333334px">광주광역시</td><td id="EAZ:" class="" style="width:153.58333333333334px">17147</td><td id="\qNA" class="" style="width:153.58333333333334px">18679</td></tr><tr id="6588969b-1b85-40d6-af56-61f4b5614b9d"><td id="o&lt;jF" class="" style="width:153.58333333333334px">대전광역시</td><td id="EAZ:" class="" style="width:153.58333333333334px">18638</td><td id="\qNA" class="" style="width:153.58333333333334px">19808</td></tr><tr id="523aff8b-01ec-42ae-b04c-2e482a25a2b5"><td id="o&lt;jF" class="" style="width:153.58333333333334px">울산광역시</td><td id="EAZ:" class="" style="width:153.58333333333334px">15905</td><td id="\qNA" class="" style="width:153.58333333333334px">17072</td></tr><tr id="a8a12090-c927-4a66-830c-3052c4cba758"><td id="o&lt;jF" class="" style="width:153.58333333333334px">세종특별자치시</td><td id="EAZ:" class="" style="width:153.58333333333334px">3231</td><td id="\qNA" class="" style="width:153.58333333333334px">3620</td></tr><tr id="d9ea75ef-70ce-4806-9f9f-f8393f6945e1"><td id="o&lt;jF" class="" style="width:153.58333333333334px">경기도</td><td id="EAZ:" class="" style="width:153.58333333333334px">128895</td><td id="\qNA" class="" style="width:153.58333333333334px">142159</td></tr><tr id="4153e2ce-88a6-4bf5-9dae-259e3f2fd239"><td id="o&lt;jF" class="" style="width:153.58333333333334px">강원도</td><td id="EAZ:" class="" style="width:153.58333333333334px">29019</td><td id="\qNA" class="" style="width:153.58333333333334px">30556</td></tr><tr id="e91df492-e3a5-4313-82a5-ddb0323ae72c"><td id="o&lt;jF" class="" style="width:153.58333333333334px">충청북도</td><td id="EAZ:" class="" style="width:153.58333333333334px">23993</td><td id="\qNA" class="" style="width:153.58333333333334px">25773</td></tr><tr id="940e713c-9d35-4969-834b-eb4310e727d8"><td id="o&lt;jF" class="" style="width:153.58333333333334px">충청남도</td><td id="EAZ:" class="" style="width:153.58333333333334px">30007</td><td id="\qNA" class="" style="width:153.58333333333334px">32285</td></tr><tr id="9d96f9ba-a4a5-4ade-93a8-d99d7a36f5d3"><td id="o&lt;jF" class="" style="width:153.58333333333334px">전라북도</td><td id="EAZ:" class="" style="width:153.58333333333334px">22917</td><td id="\qNA" class="" style="width:153.58333333333334px">24746</td></tr><tr id="645cd4f7-3ede-444a-8aa3-b4b74db8a3da"><td id="o&lt;jF" class="" style="width:153.58333333333334px">전라남도</td><td id="EAZ:" class="" style="width:153.58333333333334px">26288</td><td id="\qNA" class="" style="width:153.58333333333334px">27920</td></tr><tr id="38d2509f-b2bc-4c06-97f1-9d3bc7b5bb45"><td id="o&lt;jF" class="" style="width:153.58333333333334px">경상북도</td><td id="EAZ:" class="" style="width:153.58333333333334px">41937</td><td id="\qNA" class="" style="width:153.58333333333334px">44124</td></tr><tr id="bf7fe248-c6fc-476f-80a1-df3658178258"><td id="o&lt;jF" class="" style="width:153.58333333333334px">경상남도</td><td id="EAZ:" class="" style="width:153.58333333333334px">49727</td><td id="\qNA" class="" style="width:153.58333333333334px">53114</td></tr><tr id="440776c0-cc32-4f04-848f-b2b2f1c3dbce"><td id="o&lt;jF" class="" style="width:153.58333333333334px">제주특별자치도</td><td id="EAZ:" class="" style="width:153.58333333333334px">12935</td><td id="\qNA" class="" style="width:153.58333333333334px">14112</td></tr></tbody></table><figure id="5e9e2c06-e864-44b9-8a29-9cd4bdfc506f" class="image" style="text-align:left"><a href="analysis_data/Untitled.png"><img style="width:672px" src="analysis_data/Untitled.png"/></a></figure><p id="bda01b1a-421f-4e9a-bf04-48852fd47ee0" class="">
+</p><ol type="1" id="aa0f14df-303a-454c-8f99-6dc3ae173551" class="numbered-list" start="1"><li>사업체 수는 경기도 &gt; 서울특별시 &gt; 경상남도 순으로 많았다.</li></ol><ol type="1" id="a270345f-55eb-483e-b1a2-9fc6e7ec5686" class="numbered-list" start="2"><li>대체로 2019년에 비해 2020년에 증가하는 추세이다.</li></ol><table id="7eed2499-16eb-472c-b8d6-d44212d12492" class="simple-table"><tbody><tr id="59c625b4-f15a-4e05-8412-864628b23e33"><td id="oY?L" class="" style="width:153.58333333333334px">총 영업이익(백만원)</td><td id="]z_d" class="" style="width:153.58333333333334px"></td><td id="@[&lt;Q" class="" style="width:153.58333333333334px"></td></tr><tr id="1df2b86d-940b-4690-b0f0-e3695436a331"><td id="oY?L" class="" style="width:153.58333333333334px">시도별</td><td id="]z_d" class="" style="width:153.58333333333334px">2019</td><td id="@[&lt;Q" class="" style="width:153.58333333333334px">2020</td></tr><tr id="811b7c9d-6739-4bc9-bd1e-abcacc6f060b"><td id="oY?L" class="" style="width:153.58333333333334px">서울특별시</td><td id="]z_d" class="" style="width:153.58333333333334px">3538587</td><td id="@[&lt;Q" class="" style="width:153.58333333333334px">1385838</td></tr><tr id="9f1c398d-4e45-41f2-971e-4cbd60f2144e"><td id="oY?L" class="" style="width:153.58333333333334px">부산광역시</td><td id="]z_d" class="" style="width:153.58333333333334px">1290713</td><td id="@[&lt;Q" class="" style="width:153.58333333333334px">439098</td></tr><tr id="6ae80902-2550-43df-85b6-5b130bad4508"><td id="oY?L" class="" style="width:153.58333333333334px">대구광역시</td><td id="]z_d" class="" style="width:153.58333333333334px">895807</td><td id="@[&lt;Q" class="" style="width:153.58333333333334px">560897</td></tr><tr id="6f46a4b9-e677-486a-873f-87016b31d39d"><td id="oY?L" class="" style="width:153.58333333333334px">인천광역시</td><td id="]z_d" class="" style="width:153.58333333333334px">802210</td><td id="@[&lt;Q" class="" style="width:153.58333333333334px">382707</td></tr><tr id="8598ed1a-e665-492d-a080-952f8441f4a2"><td id="oY?L" class="" style="width:153.58333333333334px">광주광역시</td><td id="]z_d" class="" style="width:153.58333333333334px">483367</td><td id="@[&lt;Q" class="" style="width:153.58333333333334px">189940</td></tr><tr id="47a8c0a5-9a74-4128-adf2-1ac51346f2cc"><td id="oY?L" class="" style="width:153.58333333333334px">대전광역시</td><td id="]z_d" class="" style="width:153.58333333333334px">547382</td><td id="@[&lt;Q" class="" style="width:153.58333333333334px">154341</td></tr><tr id="213ff0e6-ab29-4952-8866-71e16a6a7f1c"><td id="oY?L" class="" style="width:153.58333333333334px">울산광역시</td><td id="]z_d" class="" style="width:153.58333333333334px">443233</td><td id="@[&lt;Q" class="" style="width:153.58333333333334px">326074</td></tr><tr id="101072cc-f778-4a7d-94b3-0be61c3cc3bd"><td id="oY?L" class="" style="width:153.58333333333334px">세종특별자치시</td><td id="]z_d" class="" style="width:153.58333333333334px">130237</td><td id="@[&lt;Q" class="" style="width:153.58333333333334px">61800</td></tr><tr id="fe2b28ef-8386-4093-99cb-ec253f6dff1d"><td id="oY?L" class="" style="width:153.58333333333334px">경기도</td><td id="]z_d" class="" style="width:153.58333333333334px">4067451</td><td id="@[&lt;Q" class="" style="width:153.58333333333334px">1609385</td></tr><tr id="94074207-2708-4672-868a-8e069450cb1f"><td id="oY?L" class="" style="width:153.58333333333334px">강원도</td><td id="]z_d" class="" style="width:153.58333333333334px">753949</td><td id="@[&lt;Q" class="" style="width:153.58333333333334px">437097</td></tr><tr id="ba4f7bf9-b90b-4e9e-a22e-64781ad628fa"><td id="oY?L" class="" style="width:153.58333333333334px">충청북도</td><td id="]z_d" class="" style="width:153.58333333333334px">596270</td><td id="@[&lt;Q" class="" style="width:153.58333333333334px">398853</td></tr><tr id="78e56202-118f-416e-bc99-377c20fde5ab"><td id="oY?L" class="" style="width:153.58333333333334px">충청남도</td><td id="]z_d" class="" style="width:153.58333333333334px">754890</td><td id="@[&lt;Q" class="" style="width:153.58333333333334px">403709</td></tr><tr id="3b854cc2-872f-4fdb-a4d3-f9bb9a66ecb5"><td id="oY?L" class="" style="width:153.58333333333334px">전라북도</td><td id="]z_d" class="" style="width:153.58333333333334px">703178</td><td id="@[&lt;Q" class="" style="width:153.58333333333334px">318350</td></tr><tr id="62b3651a-0592-4e8a-93b0-8c6538becf49"><td id="oY?L" class="" style="width:153.58333333333334px">전라남도</td><td id="]z_d" class="" style="width:153.58333333333334px">710061</td><td id="@[&lt;Q" class="" style="width:153.58333333333334px">355593</td></tr><tr id="4bd66402-8ff6-4c8f-a2d5-032fe158d8fa"><td id="oY?L" class="" style="width:153.58333333333334px">경상북도</td><td id="]z_d" class="" style="width:153.58333333333334px">1061043</td><td id="@[&lt;Q" class="" style="width:153.58333333333334px">345291</td></tr><tr id="21bc1697-ff90-4f3d-82ca-dfa55e70b33a"><td id="oY?L" class="" style="width:153.58333333333334px">경상남도</td><td id="]z_d" class="" style="width:153.58333333333334px">1521413</td><td id="@[&lt;Q" class="" style="width:153.58333333333334px">910850</td></tr><tr id="8daf3afb-7645-48d9-ac28-b5ebdfcbeadd"><td id="oY?L" class="" style="width:153.58333333333334px">제주특별자치도</td><td id="]z_d" class="" style="width:153.58333333333334px">322686</td><td id="@[&lt;Q" class="" style="width:153.58333333333334px">267087</td></tr></tbody></table><figure id="460a13ab-43d5-4be4-96a9-78993f20d298" class="image"><a href="analysis_data/Untitled%201.png"><img style="width:672px" src="analysis_data/Untitled%201.png"/></a></figure><ol type="1" id="71d85880-768f-4729-9e0d-ef8005d9d610" class="numbered-list" start="1"><li>총 영업이익은 경기도 &gt; 서울특별시 &gt; 경상남도 순으로 가장 많았다.</li></ol><ol type="1" id="c1559579-6c46-41a9-b5b5-641144026942" class="numbered-list" start="2"><li>영업이익은 2019년에 비해 2020년에 감소하는 추세다.</li></ol><table id="51f50436-05ed-45ee-bc83-f4d671a54e67" class="simple-table"><tbody><tr id="9f8b03fa-87f3-4a35-aa60-6c5662286d6b"><td id="r}~I" class="" style="width:153.58333333333334px">총 영업이익 (백만원)/총 사업체 수</td><td id="VfJL" class="" style="width:153.58333333333334px"></td><td id="q@O:" class="" style="width:153.58333333333334px"></td></tr><tr id="bca7a753-3dd9-4b59-aaf4-5814d440498a"><td id="r}~I" class="" style="width:153.58333333333334px">시도별</td><td id="VfJL" class="" style="width:153.58333333333334px">2019</td><td id="q@O:" class="" style="width:153.58333333333334px">2020</td></tr><tr id="fca2b0ce-533c-465e-9a94-71006f726621"><td id="r}~I" class="" style="width:153.58333333333334px">서울특별시</td><td id="VfJL" class="" style="width:153.58333333333334px">34.58691233</td><td id="q@O:" class="" style="width:153.58333333333334px">12.68118555</td></tr><tr id="d5416f1d-f3f3-400b-a919-2c3f1cb011e8"><td id="r}~I" class="" style="width:153.58333333333334px">부산광역시</td><td id="VfJL" class="" style="width:153.58333333333334px">29.70228973</td><td id="q@O:" class="" style="width:153.58333333333334px">9.470871169</td></tr><tr id="505fd4c3-b28c-4ec1-a47b-58180733249f"><td id="r}~I" class="" style="width:153.58333333333334px">대구광역시</td><td id="VfJL" class="" style="width:153.58333333333334px">29.31305628</td><td id="q@O:" class="" style="width:153.58333333333334px">17.31270449</td></tr><tr id="dda94e28-f190-4a1a-b4d0-6b96b6115374"><td id="r}~I" class="" style="width:153.58333333333334px">인천광역시</td><td id="VfJL" class="" style="width:153.58333333333334px">26.64264364</td><td id="q@O:" class="" style="width:153.58333333333334px">11.55202391</td></tr><tr id="2e45696c-59f4-4975-b19c-8a19cf7b9624"><td id="r}~I" class="" style="width:153.58333333333334px">광주광역시</td><td id="VfJL" class="" style="width:153.58333333333334px">28.18959585</td><td id="q@O:" class="" style="width:153.58333333333334px">10.16863858</td></tr><tr id="0ce85275-d81b-483e-9bd0-cf5196af6dbe"><td id="r}~I" class="" style="width:153.58333333333334px">대전광역시</td><td id="VfJL" class="" style="width:153.58333333333334px">29.36913832</td><td id="q@O:" class="" style="width:153.58333333333334px">7.791851777</td></tr><tr id="8202ac45-06b5-4536-a5eb-053658495b19"><td id="r}~I" class="" style="width:153.58333333333334px">울산광역시</td><td id="VfJL" class="" style="width:153.58333333333334px">27.86752594</td><td id="q@O:" class="" style="width:153.58333333333334px">19.09992971</td></tr><tr id="91c4d9fc-86e5-41e6-a582-50776ca575bb"><td id="r}~I" class="" style="width:153.58333333333334px">세종특별자치시</td><td id="VfJL" class="" style="width:153.58333333333334px">40.3085732</td><td id="q@O:" class="" style="width:153.58333333333334px">17.0718232</td></tr><tr id="20428800-cf3d-442f-878f-8a92e4321ee8"><td id="r}~I" class="" style="width:153.58333333333334px">경기도</td><td id="VfJL" class="" style="width:153.58333333333334px">31.55631328</td><td id="q@O:" class="" style="width:153.58333333333334px">11.32102083</td></tr><tr id="05db277c-35c4-4c42-86e4-0ec813fe4b76"><td id="r}~I" class="" style="width:153.58333333333334px">강원도</td><td id="VfJL" class="" style="width:153.58333333333334px">25.9812192</td><td id="q@O:" class="" style="width:153.58333333333334px">14.30478466</td></tr><tr id="b02f8efd-7936-498e-8fc5-197504f717e9"><td id="r}~I" class="" style="width:153.58333333333334px">충청북도</td><td id="VfJL" class="" style="width:153.58333333333334px">24.85183178</td><td id="q@O:" class="" style="width:153.58333333333334px">15.47561401</td></tr><tr id="69627051-659d-4b0f-a4b4-1647871be3e8"><td id="r}~I" class="" style="width:153.58333333333334px">충청남도</td><td id="VfJL" class="" style="width:153.58333333333334px">25.15713</td><td id="q@O:" class="" style="width:153.58333333333334px">12.50453771</td></tr><tr id="0cb9fde0-8f99-418d-bff9-6637dbbe4b61"><td id="r}~I" class="" style="width:153.58333333333334px">전라북도</td><td id="VfJL" class="" style="width:153.58333333333334px">30.6836846</td><td id="q@O:" class="" style="width:153.58333333333334px">12.86470541</td></tr><tr id="8776be25-f9bc-4bd2-ad8a-27e522ab6f93"><td id="r}~I" class="" style="width:153.58333333333334px">전라남도</td><td id="VfJL" class="" style="width:153.58333333333334px">27.01084145</td><td id="q@O:" class="" style="width:153.58333333333334px">12.73613897</td></tr><tr id="2cce457c-514e-4ce2-9151-13eacf4a69db"><td id="r}~I" class="" style="width:153.58333333333334px">경상북도</td><td id="VfJL" class="" style="width:153.58333333333334px">25.30087989</td><td id="q@O:" class="" style="width:153.58333333333334px">7.825469132</td></tr><tr id="20f342a8-559c-4926-85c5-1713b97ae165"><td id="r}~I" class="" style="width:153.58333333333334px">경상남도</td><td id="VfJL" class="" style="width:153.58333333333334px">30.59531039</td><td id="q@O:" class="" style="width:153.58333333333334px">17.14896261</td></tr><tr id="f0010f23-0971-4feb-84ca-56f969a7bb25"><td id="r}~I" class="" style="width:153.58333333333334px">제주특별자치도</td><td id="VfJL" class="" style="width:153.58333333333334px">24.94673367</td><td id="q@O:" class="" style="width:153.58333333333334px">18.92623299</td></tr></tbody></table><figure id="c620ec08-3957-4ab6-85ed-98e8b1a1137f" class="image"><a href="analysis_data/Untitled%202.png"><img style="width:665px" src="analysis_data/Untitled%202.png"/></a></figure><p id="69e2dfa4-700d-4d8a-bc23-c9c86ac5bb62" class="">
+</p><p id="026011e7-956f-465c-92f6-e32baa6a55cc" class="">
+</p><ol type="1" id="99d62ae9-a436-43e6-80e0-aad1a817d915" class="numbered-list" start="1"><li>총 영업이익과 총 사업체 수를 나눠서 비교 했을 때, 2019년에 비해 많이 감소한 지역이 있다.</li></ol><ol type="1" id="be159d36-2d4e-4b6b-9e3d-a15a2c28ae84" class="numbered-list" start="2"><li>울산광역시, 경상남도, 제주특별자치도는 다른 시도들과 비교했을 때,
+감소한 비율이 작은 것을 확인할 수있다.</li></ol><p id="fcd96e59-9198-483b-a414-4f3b036394f7" class="">
+</p></div></article></body></html>
