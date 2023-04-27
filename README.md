@@ -42,9 +42,6 @@
 ### PipeLine
 <section>
 <img src="https://img.shields.io/badge/Python-3776AB?logo=Python&logoColor=white"/>
-<img src="https://img.shields.io/badge/AWS%20Lambda-FF9900?logo=AWS%20Lambda&logoColor=white"/>
-<img src="https://img.shields.io/badge/Amazon%20CloudWatch-FF4F8B?logo=Amazon%20CloudWatch&logoColor=white"/>
-<img src="https://img.shields.io/badge/AWS%20S3-569A31?logo=AWS%20S3&logoColor=white"/>
 </section>
 
 
